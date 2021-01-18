@@ -71,29 +71,32 @@ public class AnnotationUtils {
 
 
     protected static <T> boolean conditionsVerify(String[] conditions,Field field,T t,String logic) throws IllegalAccessException {
-        return switch (logic){
-            case or->{
-                boolean result=false;
-                for(String singleIf:conditions){
-                    if(isNotBlankVerify(singleIf,field,t)){
-                        result=true;
+        Boolean result = false;
+        switch (logic) {
+            case or:
+                for (String singleIf : conditions) {
+                    if (isNotBlankVerify(singleIf, field, t)) {
+                        result = true;
                         break;
                     }
                 }
-                yield result;
-            }
-            case and->{
-                boolean result=true;
-                for(String singleIf:conditions){
-                    if(!isNotBlankVerify(singleIf,field,t)){
-                        result=false;
+                break;
+            case and: {
+                result = true;
+                for (String singleIf : conditions) {
+                    if (!isNotBlankVerify(singleIf, field, t)) {
+                        result = false;
                         break;
                     }
                 }
-                yield result;
             }
-            default -> isNotBlankVerify(conditions[0],field,t);
-        };
+            break;
+            default:
+                isNotBlankVerify(conditions[0], field, t);
+                break;
+        }
+
+        return result;
     }
 
 

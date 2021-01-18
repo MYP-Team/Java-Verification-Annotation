@@ -7,7 +7,6 @@ import excaption.SystemException;
 import java.lang.reflect.Field;
 
 public abstract class AbstractVerify extends AnnotationUtils implements IVerify{
-
     protected static <T> boolean conditionsVerify(String condition, Field field, T t){
         String[] conditions = new String[1];
         try{

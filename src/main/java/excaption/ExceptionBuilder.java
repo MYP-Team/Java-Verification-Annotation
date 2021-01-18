@@ -7,7 +7,7 @@ import org.drools.core.util.StringUtils;
 
 public class ExceptionBuilder {
 
-    private Map<String,String> cache = new HashMap<String,String>();
+    private Map<String, String> cache = new HashMap<>();
 
     public void setCache(Map<String,String> data){
         cache.clear();
@@ -32,7 +32,6 @@ public class ExceptionBuilder {
      * 使用key从缓存中获取错误信息，错误信息的配置是采用站位符的标准，如一个信息中使用 {0}，{1} 来白哦啊是错误信息的替换位置<br>
      *
      * @param code
-     * @param language
      * @param msgParams
      * @return
      */
@@ -55,7 +54,7 @@ public class ExceptionBuilder {
             return errorMsg;
         }
         for(Object msgParam:msgParams){
-            String replaceStr = "\\{"+index+"\\}";
+            String replaceStr = "\\{" + index + "}";
             errorMsg=errorMsg.replaceAll(replaceStr, msgParam.toString());
             index ++;
         }

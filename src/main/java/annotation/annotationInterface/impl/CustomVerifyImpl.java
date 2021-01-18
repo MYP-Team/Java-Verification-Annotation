@@ -23,7 +23,7 @@ public class CustomVerifyImpl extends AbstractClassVerify implements IVerify {
         try{
             field.setAccessible(true);
             Class<?> clazz=Class.forName(className);
-            clazz.getMethod(methodName, field.getClass(),Object.class).invoke(clazz.newInstance(),field,t);
+            clazz.getMethod(methodName, field.getClass(), Object.class).invoke(clazz.getDeclaredConstructor().newInstance(), field, t);
         }catch (BusinessException e){
             throw new BusinessException(customVerify.code(),customVerify.message());
         }catch (Exception e) {
@@ -40,7 +40,7 @@ public class CustomVerifyImpl extends AbstractClassVerify implements IVerify {
         String methodName=customVerify.className();
         try{
             Class<?> inputClazz=Class.forName(className);
-            clazz.getMethod(methodName,Object.class).invoke(inputClazz.newInstance(),t);
+            clazz.getMethod(methodName, Object.class).invoke(inputClazz.getDeclaredConstructor().newInstance(), t);
         }catch (BusinessException e){
             throw new BusinessException(customVerify.code(),customVerify.message());
         }catch (Exception e) {

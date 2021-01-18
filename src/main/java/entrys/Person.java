@@ -5,8 +5,7 @@ import annotation.annotationInterface.Number;
 import lombok.*;
 
 @ToString
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @Builder
 public class Person {

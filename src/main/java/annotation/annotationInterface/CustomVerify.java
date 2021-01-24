@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 public @interface CustomVerify {
     String className();
     String methodName() default "verify";
-    String code();
-    String message();
+    String code() default "";
+    String message()default "";
     String conditions() default "";
 }

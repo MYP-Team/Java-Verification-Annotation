@@ -18,7 +18,7 @@ public class DateTimeValidateImpl extends AbstractVerify implements IVerify {
     @Override
     public <T> void verify(Field field, T t) {
         DateTimeValidate timeValidate = field.getAnnotation(DateTimeValidate.class);
-        if (!nullStr.equals(timeValidate.conditions()) && !conditionsVerify(timeValidate.conditions(), field, t)) {
+        if(!nullStr.equals(timeValidate.conditions())&&!conditionsVerify(timeValidate.conditions(), field, t)){
             return;
         }
         try {

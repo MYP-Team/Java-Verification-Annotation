@@ -17,7 +17,7 @@ public class LengthImpl extends AbstractVerify implements IVerify {
         try {
             String value = String.valueOf(field.get(t));
             Length length = field.getAnnotation(Length.class);
-            if(!nullStr.equals(length.conditions())&&!conditionsVerify(length.conditions(),field,t)){
+            if(!nullStr.equals(length.conditions())&&!conditionsVerify(length.conditions(), field, t)){
                 return;
             }
             int min = length.min();

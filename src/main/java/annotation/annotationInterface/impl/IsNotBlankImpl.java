@@ -18,7 +18,7 @@ public class IsNotBlankImpl extends AbstractVerify implements IVerify {
             field.setAccessible(true);
             NotBlank notNull = field.getAnnotation(NotBlank.class);
             Object value = field.get(t);
-            if(!nullStr.equals(notNull.conditions())&&!conditionsVerify(notNull.conditions(),field,t)){
+            if(!nullStr.equals(notNull.conditions())&&!conditionsVerify(notNull.conditions(), field, t)){
                 return;
             }
             if (null==value) {

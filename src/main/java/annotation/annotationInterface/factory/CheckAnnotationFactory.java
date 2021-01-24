@@ -11,9 +11,9 @@ public class CheckAnnotationFactory extends AnnotationUtils {
 
     public  static  <T> void verify(T t){
         try {
-            verifyClass(t);
             Field[] fields = t.getClass().getDeclaredFields();
-            Arrays.stream(fields).parallel().forEach(field-> verifyField(field,t));
+            Arrays.stream(fields).forEach(field-> verifyField(field,t));
+            verifyClass(t);
         }catch (BusinessException e){
             throw new BusinessException(e.getCode(),e.getMessage());
         }catch (Exception e) {

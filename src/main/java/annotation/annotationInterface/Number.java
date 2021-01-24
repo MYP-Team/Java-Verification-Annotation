@@ -9,8 +9,8 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface Number {
     int min() default 0;
-    int max();
-    String message();
-    String code();
+    int max() default 0;
+    String message() default "";
+    String code() default "";
     String conditions() default "";
 }

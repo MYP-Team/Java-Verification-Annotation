@@ -20,11 +20,11 @@ public class SelectImpl extends AbstractVerify implements IVerify {
             field.setAccessible(true);
             String valueStr=String.valueOf(field.get(t));
             Select select = field.getAnnotation(Select.class);
-            if(!nullStr.equals(select.conditions())&&!conditionsVerify(select.conditions(),field,t)){
+            if(!nullStr.equals(select.conditions())&&!conditionsVerify(select.conditions(), field, t)){
                 return;
             }
             String[] valueArray=select.value();
-            if(Arrays.stream(valueArray).parallel().noneMatch(valueStr::equals)){
+            if(Arrays.stream(valueArray).noneMatch(valueStr::equals)){
                 throw new BusinessException(select.code(),select.message());
             }
         }catch (BusinessException e){

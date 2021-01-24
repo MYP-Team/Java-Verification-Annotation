@@ -18,7 +18,7 @@ public class NumberImpl extends AbstractVerify implements IVerify {
             String value = String.valueOf(field.get(t));
             int intValue = Integer.parseInt(value);
             annotation.annotationInterface.Number number = field.getAnnotation(annotation.annotationInterface.Number.class);
-            if(!nullStr.equals(number.conditions())&&!conditionsVerify(number.conditions(),field,t)){
+            if(!nullStr.equals(number.conditions())&&!conditionsVerify(number.conditions(), field, t)){
                 return;
             }
             int min = number.min();

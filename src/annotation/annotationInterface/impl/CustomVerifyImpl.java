@@ -16,8 +16,8 @@ public class CustomVerifyImpl extends AbstractClassVerify implements IVerify {
     public <T> void verify(Field field, T t) {
         CustomVerify customVerify=field.getAnnotation(CustomVerify.class);
         String className=customVerify.className();
-        String methodName=customVerify.className();
-        if(!nullStr.equals(customVerify.conditions())&&!conditionsVerify(customVerify.conditions(),field,t)){
+        String methodName=customVerify.methodName();
+        if(!nullStr.equals(customVerify.conditions())&&!conditionsVerify(customVerify.conditions(), field, t)){
             return;
         }
         try{
@@ -33,14 +33,14 @@ public class CustomVerifyImpl extends AbstractClassVerify implements IVerify {
     }
 
     @Override
-    public <T> void classVerify(T t) {
+    public <T> void verify(T t) {
         Class<?> clazz=t.getClass();
         CustomVerify customVerify=clazz.getAnnotation(CustomVerify.class);
         String className=customVerify.className();
-        String methodName=customVerify.className();
+        String methodName=customVerify.methodName();
         try{
             Class<?> inputClazz=Class.forName(className);
-            clazz.getMethod(methodName,Object.class).invoke(inputClazz.newInstance(),t);
+            inputClazz.getMethod(methodName,Object.class).invoke(inputClazz.newInstance(),t);
         }catch (BusinessException e){
             throw new BusinessException(customVerify.code(),customVerify.message());
         }catch (Exception e) {
